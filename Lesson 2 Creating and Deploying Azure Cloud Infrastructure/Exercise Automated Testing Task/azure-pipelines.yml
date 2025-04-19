@@ -3,8 +3,7 @@ stages:
 - stage: Build
   jobs:
   - job: Build
-    pool:
-      name: Hosted Ubuntu 1604
+    pool: flaskpoolagent
     steps:
     - task: CmdLine@2
       displayName: Run Regression Tests
