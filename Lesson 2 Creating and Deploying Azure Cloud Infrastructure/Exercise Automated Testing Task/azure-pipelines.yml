@@ -1,4 +1,6 @@
 name: Azure Pipelines
+variables:
+  python.version: '3.10.12'
 stages:
 - stage: Build
   jobs:
@@ -9,12 +11,18 @@ stages:
       inputs:
         versionSpec: '18.x'
       displayName: 'Install Node.js'
+    
+    - script: |
+        echo "Listing all files"
+        ls -R "$(System.DefaultWorkingDirectory)"
+      displayName: 'Debug File Paths'
+
     - task: CmdLine@2
       displayName: Run Regression Tests
       continueOnError: true
       inputs:
         script: 'newman run starterapis.json'
-        workingDirectory: $(System.DefaultWorkingDirectory)/Exercise Automated Testing Task'
+        workingDirectory: 'starter-code/automatedtesting/postman'
     - task: CmdLine@2
       displayName: Install Newman
       inputs:
