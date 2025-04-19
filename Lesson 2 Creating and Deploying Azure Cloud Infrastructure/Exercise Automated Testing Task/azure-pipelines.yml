@@ -17,16 +17,18 @@ stages:
         ls -R "$(System.DefaultWorkingDirectory)"
       displayName: 'Debug File Paths'
 
+
+    - task: CmdLine@2
+      displayName: Install Newman
+      inputs:
+        script: 'sudo npm install -g newman'
+        workingDirectory: '$(System.DefaultWorkingDirectory)'
     - task: CmdLine@2
       displayName: Run Regression Tests
       continueOnError: true
       inputs:
         script: 'newman run starterapis.json'
         workingDirectory: 'starter-code/automatedtesting/postman'
-    - task: CmdLine@2
-      displayName: Install Newman
-      inputs:
-        script: 'sudo npm install -g newman'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
+    
         
     
