@@ -5,6 +5,10 @@ stages:
   - job: Build
     pool: flaskpoolagent
     steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+      displayName: 'Install Node.js'
     - task: CmdLine@2
       displayName: Run Regression Tests
       continueOnError: true
