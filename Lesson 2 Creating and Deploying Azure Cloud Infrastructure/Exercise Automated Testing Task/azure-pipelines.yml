@@ -9,12 +9,12 @@ stages:
       displayName: Run Regression Tests
       continueOnError: true
       inputs:
-        script: 'newman run StarterAPIs.json'
+        script: 'newman run starterapis.json'
         workingDirectory: 'starter-code/automatedtesting/postman'
     - task: CmdLine@2
       displayName: Install Newman
       inputs:
         script: 'sudo npm install -g newman'
-        workingDirectory: "$(System.DefaultWorkingDirectory)/Exercise Automated Testing Task"
+        workingDirectory: $(System.DefaultWorkingDirectory)
         
     
